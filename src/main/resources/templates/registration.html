@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/791bdd6a9a.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+
+<body>
+<div class="row">
+    <div id="login-wrapper" class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
+        <div class="arrow">
+            <a th:href="@{/home}"><i class="material-icons">arrow_back</i></a>
+        </div>
+        <div class="row">
+            <div class="col s4 offset-s4 logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 header">
+                <h1>
+                    Sign up for
+                </h1>
+                <h1><b>Meetings</b></h1>
+            </div>
+        </div>
+        <form method="post" th:object="${userForm}" class="col s12" id="register-form" th:action="@{/registration}">
+            <div class="row">
+                <div class="input-field col s10 offset-s1 m8 offset-m2">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input th:field="*{username}" id="login" type="text" class="" min="5" max="20">
+                    <label for="login">Login</label>
+                    <span id="b-helper-login" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+                    <span class="helper-text" id="helper-login" data-error=""></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10 offset-s1 m8 offset-m2">
+                    <i class="material-icons prefix">email</i>
+                    <input th:field="*{email}" id="email" type="email" class="">
+                    <label for="email">Email</label>
+                    <span id="b-helper-email" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+                    <span class="helper-text" id="helper-email" data-error=""></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10 offset-s1 m8 offset-m2">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input th:field="*{password}" id="password" type="password" class="">
+                    <label for="password">Password</label>
+                    <span id="b-helper-password" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+                    <span class="helper-text" id="helper-password" data-error=""></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10 offset-s1 m8 offset-m2">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input th:field="*{passwordConfirm}" id="confirm_password" type="password" class="">
+                    <label for="confirm_password">Confirm password</label>
+                    <span id="b-helper-cpassword" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">PasswordConfirm Error</span>
+                    <span id="helper-cpassword" class="helper-text" data-error=""></span>
+                </div>
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light orange lighten-2 btn btn-login" type="submit"
+                        name="action" id="button-register" disabled>Sign up
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col s12 link" style="text-align: center">
+                <a th:href="@{/login}">Back to login</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script/register.js"></script>
+</body>
+
+</html>

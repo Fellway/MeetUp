@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/791bdd6a9a.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all-events.css}">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">
+</nav>
+<div class="row orange lighten-2 events-header center-align">
+    <h1><b>Find another event for yourself</b></h1>
+    <h3>Events nearby: 0</h3>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>Events I have subscribed to:</h2>
+        <div th:each="userEvent : ${subscribed}" class="col l4 m6">
+            <div class="card hoverable">
+                <img th:src="${@imageServiceImpl.getEventImage('123123')}">
+                <div class="card-info">
+                    <h3 th:text="${userEvent.title}"><b></b></h3>
+                    <p>Number of participants:
+                        <span th:text="${userEvent.participants.size()}"></span>
+                    </p>
+                    <p>Free places:
+                        <span th:text="${userEvent.getNumberOfFreeSeats()}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2>All events: </h2>
+        <div th:each="event : ${events}" class="col l4 m6 s12">
+            <a th:href="@{/events/{identity}(identity=${event.identity})}">
+                <div class="card hoverable">
+                    <img th:src="${@imageServiceImpl.getEventImage(event.identity)}">
+                    <div class="card-info">
+                        <h3 th:text="${event.title}"><b></b></h3>
+                        <p>Number of participants:
+                            <span th:text="${event.participants.size()}"></span>
+                        </p>
+                        <p>Free places:
+                            <span th:text="${event.getNumberOfFreeSeats()}"></span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/footer :: footer">
+</footer>
+</body>
+<script src="script/navbar.js"></script>
+<script src="script/event.js"></script>
+
+</html>

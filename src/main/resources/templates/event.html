@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/791bdd6a9a.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/event.css" th:href="@{/css/event.css}">
+</head>
+
+<body>
+<nav th:replace="fragments/navbar :: navbar">
+</nav>
+<div class="container">
+    <div th:if="${info}" class="modal-wrapper">
+        <div id="modal1" class="modal open" tabindex="0"
+             style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+            <div class="modal-content">
+                <h2>Info</h2>
+                <p th:text="${info}"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+        <div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div>
+    </div>
+    <section>
+        <div class="row">
+            <div class="col s12 m8 info">
+                <p>Monady, 1 July 2019</p>
+                <h1 th:text="${event.getTitle()}"></h1>
+                <h6>Organizer:</h6>
+                <div class="organizer">
+                    <img class="avatar" th:src="@{~/img/avatar.png}">
+                    <div><a href="!#" th:text="${event.getOrganizer().getUsername()}">Niiiick</a></div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <h2>Do you want to join?</h2>
+                <h4>Free places: <span th:text="${event.getNumberOfFreeSeats()}"></span></h4>
+                <form class="left" th:action="@{/event-registration/{identity}(identity=${event.getIdentity()})}" method="post">
+                    <button type="submit" class="waves-effect waves-light orange lighten-2 btn btn-event"><i
+                            class="material-icons">close</i></button>
+                    <input type="hidden" th:name="signOff"/>
+                </form>
+                <form class="left" th:action="@{/event-registration/{identity}(identity=${event.getIdentity()})}" method="post">
+                    <button type="submit" class="waves-effect waves-light orange lighten-2 btn btn-event"><i
+                            class="material-icons">check</i></button>
+                    <input type="hidden" th:name="signUp"/>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="col s12 m7">
+                <img class="materialboxed event-image" th:src="@{${eventPhoto}}">
+            </div>
+            <div class="col s12 m5">
+                <div id="map">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3><b>Description</b></h3>
+            <p th:utext="${event.getDescription()}">
+            </p>
+        </div>
+        <div class="row">
+            <div class="members">
+                <h3><b>Joined:</b></h3>
+                <div th:each="participant: ${event.getParticipants()}" class="col s12 l7">
+                    <div class="col s3 l2">
+                        <div class="card">
+                            <div class="card-image">
+                                <div class="card-avatar">
+                                    <img th:src="@{/img/avatar.png}">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <a href="#" th:text="${participant.getUsername()}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="col s9">
+                <h3><b>More events in this category</b></h3>
+            </div>
+            <div class="col s3">
+                <a href="!#">Show all</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/id/137/400">
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/id/134/400">
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/id/136/400">
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/id/135/400">
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<footer th:replace="fragments/footer :: footer">
+</footer>
+</body>
+<script th:src="@{/script/navbar.js}"></script>
+<script th:src="@{/script/event.js}"></script>
+<script type="text/javascript" th:src="@{/script/modals.js}"></script>
+<script th:inline="javascript" th:src="@{/script/maps2.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var tLat = /*[[${event.getPlaceOfMeeting().getY()}]]*/ 43.654;
+    var tLng = /*[[${event.getPlaceOfMeeting().getX()}]]*/ -79.383;
+    /*]]>*/
+</script>
+<script th:inline="javascript"
+        th:src="${'http://maps.googleapis.com/maps/api/js?callback=createMap&libraries=places&key=' + mapApiKey}"
+        async defer>
+</script>
+
+</html>

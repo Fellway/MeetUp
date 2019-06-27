@@ -1,0 +1,79 @@
+section {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+section::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    border-bottom: 1px solid #999999;
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+}
+
+.card {
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-content {
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+    padding: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h6 {
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+h2,
+h4 {
+    margin-top: 20px;
+}
+
+.organizer {
+    max-width: 50px;
+    text-align: center;
+}
+
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+
+.btn-event {
+    min-width: 100px;
+}
+
+.btn-event i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a {
+    color: #ffb74d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+#map {
+    height: 350px;
+    width: 100%;
+    border: 1px solid black;
+}

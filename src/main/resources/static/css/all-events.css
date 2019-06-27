@@ -1,0 +1,34 @@
+.events-header {
+    color: white;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    height: 250px;
+    position: relative;
+
+}
+
+.card-info {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 99%);
+    color: white;
+    position: absolute;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    max-height: 150px;
+}
+
+.card img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-info h3 {
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<footer class="page-footer orange lighten-2" th:fragment="footer">
+    <div class="footer-arrow">
+        <a href="#presentation"><i class="fas fa-arrow-up"></i></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.
+                </p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Find us on:</h5>
+                <ul class="list-inline">
+                    <li><i class="fab fa-facebook-f"></i></li>
+                    <li><i class="fab fa-twitter"></i></li>
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-linkedin"></i></li>
+                    <li><i class="fab fa-snapchat"></i></li>
+                </ul>
+            </div>
+            <div class="col s12">
+                <img class="footer-logo" th:src="@{~/img/logo3.png}">
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

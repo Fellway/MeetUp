@@ -1,0 +1,117 @@
+.image-placeholder {
+    position: relative;
+    height: 300px;
+}
+
+.image-placeholder:hover {
+    transition: .3s;
+}
+
+.image-placeholder-description {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image-placeholder-description p {
+    margin: 0;
+}
+
+form {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.image-input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    overflow: hidden;
+    content: '';
+    cursor: pointer;
+}
+
+#image-uploaded {
+    z-index: 1;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border .2s ease-in-out;
+}
+
+.button-close {
+    display: none;
+    position: absolute;
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.fixed {
+    position: fixed;
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #ffb74d;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #ffb74d;
+}
+
+input[type=range]::-ms-thumb {
+    background-color: #ffb74d;
+}
+
+/***** These are to edit the thumb and the text inside the thumb *****/
+input[type=range] + .thumb {
+    background-color: #ffb74d;
+}
+
+input[type=range] + .thumb.active .value {
+    color: white;
+    font-weight: bold;
+}
+
+.input-field .prefix ~ .range-field {
+    margin-left: 3rem;
+    width: 92%;
+    width: calc(100% - 3rem);
+}
+
+.helper-text {
+    color: #F44336 !important;
+    display: inline-block;
+    position: relative;
+    min-height: 18px;
+    font-size: 12px;
+    margin-left: 3rem;
+}
+
+#helper-title,
+#helper-description{
+    display: none;
+}
+.input-field .helper-text::after{
+    position: static;
+}

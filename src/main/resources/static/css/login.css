@@ -1,0 +1,110 @@
+body {
+    position: relative;
+    background: rgb(255, 183, 77);
+    background: linear-gradient(90deg, rgba(255, 183, 77, 1) 0%, rgba(255, 204, 128, 1) 100%);
+    color: #616161;
+}
+
+.logo {
+    background: url(../img/logo1.png) no-repeat center center;
+    height: 80px;
+    width: 80px;
+    content: "";
+}
+
+.header h1 {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#login-wrapper {
+    position: absolute;
+    top: 10vh;
+    background-color: #fff;
+    height: auto;
+    border-radius: 5px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.arrow {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+.arrow i {
+    font-size: 50px;
+}
+
+.input-field {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.btn-login {
+    margin: 30px auto;
+    width: 50%;
+}
+
+.row .center-align{
+    margin-bottom: 0;
+}
+
+p{
+    color: #F44336;
+    margin: 0;
+}
+
+#helper-login,
+#helper-email,
+#helper-password,
+#helper-cpassword {
+    display: none;
+}
+
+.input-field .helper-text::after {
+    position: static;
+}
+
+span {
+    color: #F44336;
+    display: inline-block;
+    position: relative;
+    min-height: 18px;
+    font-size: 12px;
+    margin-left: 3rem;
+}
+
+.header {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #ffb74d;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.link:first-child {
+    text-align: right;
+}
+
+@media (max-width: 992px) {
+    .link {
+        text-align: center !important;
+    }
+}
+
+
+@media (min-width: 1500px) {
+    #login-wrapper {
+        max-width: 500px !important;
+        margin-left: calc((100% / 2) - 250px);
+    }
+
+}

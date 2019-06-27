@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav>
+        <div class="nav-wrapper">
+            <a th:href="@{/home}" class="brand-logo"><img th:src="@{/img/logo.png}" alt="logo" id="logo"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+                <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+                <li sec:authorize="isAnonymous()"><a href="/registration">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/registration">Register</a></li>
+    </ul>
+</div>
+</body>
+</html>

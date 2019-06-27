@@ -1,0 +1,19 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: ${SMTP_HOST}
+    username: ${EMAIL_LOGIN}
+    password: ${EMAIL_PASSWORD}
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+  sendgrid:
+    api-key: ${SENDGRID_API_KEY}
+google:
+  apiKey: ${GOOGLE_API_KEY}

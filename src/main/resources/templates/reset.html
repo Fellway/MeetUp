@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/791bdd6a9a.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+
+<body>
+<div class="row">
+    <div th:if="${info}" class="modal-wrapper">
+        <div id="modal1" class="modal open" tabindex="0"
+             style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+            <div class="modal-content">
+                <h2>Info</h2>
+                <p th:text="${info}"></p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+        <div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div>
+    </div>
+    <div id="login-wrapper" class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
+        <div class="arrow">
+            <a href="index.html"><i class="material-icons">arrow_back</i></a>
+        </div>
+        <div class="row">
+            <div class="col s4 offset-s4 logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 header">
+                <h1>
+                    Reset your
+                </h1>
+                <h1><b>Meetings Password</b></h1>
+            </div>
+        </div>
+        <form th:action="@{/reset-password}" method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s10 offset-s1 m8 offset-m2">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" name="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light orange lighten-2 btn btn-login" type="submit"
+                        name="action">Send
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col s12 m5 link">
+                <a href="login.html">Back to login</a>
+            </div>
+            <div class="col hide-on-small-only m2" style="text-align: center">
+                |
+            </div>
+            <div class="col s12 m5 link">
+                <a href="register.html">Create Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="script/modals.js"></script>
+</html>

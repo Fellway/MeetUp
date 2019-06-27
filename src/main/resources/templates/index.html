@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/791bdd6a9a.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/player.css" th:href="@{/css/player.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/home.css" th:href="@{/css/home.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}">
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">
+</nav>
+<div th:if="${info}" class="modal-wrapper">
+    <div id="modal1" class="modal open" tabindex="0"
+         style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+        <div class="modal-content">
+            <h2>Info</h2>
+            <p th:text="${info}"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+    <div class="modal-overlay" style="z-index: 1002; display: block; opacity: 0.5;"></div>
+</div>
+<section id="presentation">
+    <div class="row no-padding-lr">
+        <div class="col s12 no-padding-lr">
+            <video autoplay muted loop id="myVideo">
+                <source src="video/video.mp4" type=" video/mp4">
+            </video>
+            <img src="img/party.jpg" id="myImage">
+            <div class="content">
+                <h1>Lorem, ipsum dolor.</h1>
+                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                <a sec:authorize="isAnonymous()" th:href="@{/login}" class="waves-effect waves-light orange lighten-2 btn">Join us</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/new-event}" class="waves-effect waves-light orange lighten-2 btn">Create new event</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <section id="incoming-events">
+        <div class="row">
+            <div class="col s12">
+                <div class="header">
+                    <h3>Newest events</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, quam?</p>
+                </div>
+                <div th:each="event : ${events}" class="col s6 m6 l3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img th:src="${@imageServiceImpl.getEventImage(event.identity)}">
+                            <span class="card-title" th:text="${event.title}"></span>
+                        </div>
+                        <div class="card-content">
+                            <p th:text="${#strings.abbreviate(event.description,100)}"></p>
+                        </div>
+                        <div class="card-action">
+                            <a th:href="@{/events/{identity}(identity=${event.identity})}">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 center-align">
+                    <a th:href="@{/events}" class="waves-effect waves-light orange lighten-2 btn btn-long">Show all
+                        events</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="categories">
+        <div class="row">
+            <div class="col s12">
+                <div class="categories">
+                    <h3>Categories</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum, quibusdam!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div th:each="category : ${categories}" class="col s6 m4 l3">
+                <a th:href="@{/categories/{categoryName}(categoryName=${category.getNameWithDashes()})}">
+                    <div class="col-content">
+                        <div class="card center-align">
+                            <div class="card-image">
+                                <img th:src="${@imageServiceImpl.getCategoryImage(category.getName())}">
+                            </div>
+                            <span class="card-title" th:text="${category.name}"></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+<footer th:replace="fragments/footer :: footer">
+</footer>
+</body>
+<script type="text/javascript" src="script/navbar.js"></script>
+<script type="text/javascript" src="script/modals.js"></script>
+<script type="text/javascript" src="script/player.js"></script>
+</html>
